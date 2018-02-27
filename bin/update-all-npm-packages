@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+
+import json
+import subprocess
+
+with open('./package.json') as f:
+    package = json.load(f)
+
+dependencies = list(package.get('dependencies', {}).keys())
+devDependencies = list(package.get('devDependencies', {}).keys())
+
+subprocess.check_call(['npm', 'uninstall'] + dependencies)
+subprocess.check_call(['npm', 'uninstall'] + devDependencies)
+subprocess.check_call(['npm', 'install', '--save'] + dependencies)
+subprocess.check_call(['npm', 'install', '--save'] + devDependencies)
