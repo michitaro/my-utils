@@ -11,5 +11,5 @@ devDependencies = list(package.get('devDependencies', {}).keys())
 
 subprocess.check_call(['npm', 'uninstall'] + dependencies)
 subprocess.check_call(['npm', 'uninstall'] + devDependencies)
-subprocess.check_call(['npm', 'install', '--save'] + dependencies)
 subprocess.check_call(['npm', 'install', '--save-dev'] + devDependencies)
+subprocess.check_call(['npm', 'install', '--save'] + dependencies)
